@@ -7,25 +7,29 @@ public class chuyen_so_thanh_chu {
         Scanner sc = new Scanner(System.in);
         System.out.println("Mời bạn nhập số cần chuyển đổi thành chữ: ");
         String input = sc.nextLine();
-        String[] inputRay = input.split(" ");
-        switch (inputRay.length -1 ) {
+
+        String[] inputRay = input.split("");
+        switch (inputRay.length) {
             case 1:
-                if (inputRay[1].equals("0")) {
+                if (inputRay[0].equals("0")) {
                     System.out.println("zero");
                 } else {
-                    System.out.println(tenDown(inputRay[1]));
+                    System.out.println(tenDown(inputRay[0]));
                 }
                 break;
             case 2:
-                System.out.println(tenUp(inputRay[1], tenDown(inputRay[2])));
+                System.out.println(tenUp(inputRay[0], tenDown(inputRay[1])));
                 break;
             case 3:
-                if ((inputRay[2].equals("0")) && (inputRay[3].equals("0"))) {
-                    System.out.println(hundredUp(inputRay[1]));
+                if ((inputRay[1].equals("0")) && (inputRay[2].equals("0"))) {
+                    System.out.println(hundredUp(inputRay[0]));
                 } else {
-                    System.out.print(hundredUp(inputRay[1]));
-                    System.out.print(" and" + tenUp(inputRay[2], tenDown(inputRay[3])) + "\n");
+                    System.out.print(hundredUp(inputRay[0]));
+                    System.out.print(" and " + tenUp(inputRay[1], tenDown(inputRay[2])) + "\n");
                 }
+                break;
+            default:
+                System.out.println("Can't read this");
         }
 
     }
@@ -75,9 +79,9 @@ public class chuyen_so_thanh_chu {
                         return previous + "teen";
                 }
             case "2":
-                return "twenty" + previous;
+                return "twenty " + previous;
             case "3":
-                return "thirty" + previous;
+                return "thirty " + previous;
             default:
                 return tenDown(number) + "ty" + " " + previous;
         }
@@ -85,6 +89,6 @@ public class chuyen_so_thanh_chu {
     }
 
     private static String hundredUp(String number) {
-        return tenDown(number) + "hundred";
+        return tenDown(number) + " hundred";
     }
 }
