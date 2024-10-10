@@ -8,7 +8,6 @@ public class ConvertNumber {
         System.out.println("Mời bạn nhập số cần chuyển đổi thành chữ: ");
         String input = sc.nextLine();
         String[] inputRay = input.split("");
-
         switch (inputRay.length) {
             case 1:
                 if (inputRay[0].equals("0")) {
