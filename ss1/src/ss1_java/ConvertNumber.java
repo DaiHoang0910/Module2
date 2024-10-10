@@ -2,13 +2,13 @@ package ss1_java;
 
 import java.util.Scanner;
 
-public class chuyen_so_thanh_chu {
+public class ConvertNumber {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Mời bạn nhập số cần chuyển đổi thành chữ: ");
         String input = sc.nextLine();
-
         String[] inputRay = input.split("");
+
         switch (inputRay.length) {
             case 1:
                 if (inputRay[0].equals("0")) {
@@ -18,18 +18,26 @@ public class chuyen_so_thanh_chu {
                 }
                 break;
             case 2:
-                System.out.println(tenUp(inputRay[0], tenDown(inputRay[1])));
+                if (inputRay[0].equals("0") || inputRay[1].equals("0")) {
+                    System.out.println("Vui lòng không nhập số 0 ở đầu với số 2 chữ số");
+                } else {
+                    System.out.println(tenUp(inputRay[0], tenDown(inputRay[1])));
+                }
                 break;
             case 3:
-                if ((inputRay[1].equals("0")) && (inputRay[2].equals("0"))) {
-                    System.out.println(hundredUp(inputRay[0]));
+                if (inputRay[0].equals("0") || inputRay[2].equals("0")) {
+                    System.out.println("Vui lòng không nhập số 0 ở đầu với số 3 chữ số");
                 } else {
-                    System.out.print(hundredUp(inputRay[0]));
-                    System.out.print(" and " + tenUp(inputRay[1], tenDown(inputRay[2])) + "\n");
+                    if ((inputRay[1].equals("0")) && (inputRay[2].equals("0"))) {
+                        System.out.println(hundredUp(inputRay[0]));
+                    } else {
+                        System.out.print(hundredUp(inputRay[0]));
+                        System.out.print(" and " + tenUp(inputRay[1], tenDown(inputRay[2])) + "\n");
+                    }
                 }
                 break;
             default:
-                System.out.println("Can't read this");
+                System.out.println("Lỗi");
         }
 
     }
@@ -57,7 +65,7 @@ public class chuyen_so_thanh_chu {
             case "9":
                 return "nine";
             default:
-                return "can't read this";
+                return "Lỗi";
         }
     }
 
