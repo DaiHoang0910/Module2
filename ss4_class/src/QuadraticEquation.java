@@ -1,6 +1,47 @@
 import java.util.Scanner;
 
-public class OOPQuadraticEquation {
+public class QuadraticEquation {
+    private double a;
+    private double b;
+    private double c;
+
+    public QuadraticEquation() {
+
+    }
+
+    public QuadraticEquation(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double getA() {
+        return a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public double getC() {
+        return c;
+    }
+
+    public double getDiscriminant() {
+        return (b * b - 4 * a * c);
+    }
+
+    
+    public double getRoot1() {
+        if (this.getDiscriminant() < 0) return 0;
+        return ((-b + Math.sqrt(getDiscriminant())) / (2 * a));
+    }
+
+    public double getRoot2() {
+        if (this.getDiscriminant() < 0) return 0;
+        return ((-b - Math.sqrt(getDiscriminant())) / (2 * a));
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double a;
@@ -19,7 +60,7 @@ public class OOPQuadraticEquation {
                 System.out.println("The equation has no root");
             } else if (equation.getDiscriminant() == 0) {
                 System.out.println("Delta: " + equation.getDiscriminant());
-                System.out.println("The equation has 1 root: " + equation.getRoot());
+                System.out.println("The equation has 1 root: " + (-b / (2 * a)));
             } else {
                 System.out.println("The equation has 2 root: ");
                 System.out.println("Delta: " + equation.getDiscriminant());
@@ -42,50 +83,4 @@ public class OOPQuadraticEquation {
 
     }
 
-    public static class QuadraticEquation {
-        private double a;
-        private double b;
-        private double c;
-
-        public QuadraticEquation() {
-
-        }
-
-        public QuadraticEquation(double a, double b, double c) {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-        }
-
-        public double getA() {
-            return a;
-        }
-
-        public double getB() {
-            return b;
-        }
-
-        public double getC() {
-            return c;
-        }
-
-        public double getDiscriminant() {
-            return b * b - 4 * a * c;
-        }
-
-        public double getRoot() {
-            if (this.getDiscriminant() == 0) return 0;
-            return -b / (2 * a);
-        }
-
-        public double getRoot1() {
-            if (this.getDiscriminant() < 0) return 0;
-            return ((-b + Math.sqrt(getDiscriminant())) / (2 * a));
-        }
-
-        public double getRoot2() {
-            if (this.getDiscriminant() < 0) return 0;
-            return ((-b - Math.sqrt(getDiscriminant())) / (2 * a));
-        }
-    }
 }
