@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/ss3_method/ss3_method.iml" filepath="$PROJECT_DIR$/ss3_method/ss3_method.iml" />
       <module fileurl="file://$PROJECT_DIR$/ss4_class/ss4_class.iml" filepath="$PROJECT_DIR$/ss4_class/ss4_class.iml" />
       <module fileurl="file://$PROJECT_DIR$/ss5_access_modifier/ss5_access_modifier.iml" filepath="$PROJECT_DIR$/ss5_access_modifier/ss5_access_modifier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss6_Inheritance/ss6_Inheritance.iml" filepath="$PROJECT_DIR$/ss6_Inheritance/ss6_Inheritance.iml" />
     </modules>
   </component>
 </project>
