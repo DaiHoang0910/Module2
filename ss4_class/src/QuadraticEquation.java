@@ -31,7 +31,7 @@ public class QuadraticEquation {
         return (b * b - 4 * a * c);
     }
 
-    
+
     public double getRoot1() {
         if (this.getDiscriminant() < 0) return 0;
         return ((-b + Math.sqrt(getDiscriminant())) / (2 * a));
