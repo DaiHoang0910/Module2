@@ -2,26 +2,29 @@ import java.util.Scanner;
 
 public class Prime {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter number: ");
-        int number = sc.nextInt();
-        if (number < 2){
-            System.out.println(number + " `is not a prime number");
-        }else {
-            int i = 2;
-            boolean check = true;
-            while (i <= Math.sqrt(number)){
-                if (number % i == 0){
-                    check = false;
-                    break;
-                }
-                i++;
+        int n = 20;
+        System.out.printf("%d số nguyên tố đầu tiên là: \n", n);
+        int count = 0;
+        int i = 2;
+        while (count < n) {
+            if(checkPrime(i)){
+                System.out.print(i + " ");
+                count++;
             }
-            if (check){
-                System.out.println(number + " is a prime number");
-            }else{
-                System.out.println(number + " is not a prime number");
+            i++;
+        }
+    }
+
+    public static boolean checkPrime(int n) {
+        if (n < 2) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
             }
         }
+        return true;
     }
 }
