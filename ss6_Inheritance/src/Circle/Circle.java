@@ -2,7 +2,7 @@ package Circle;
 
 public class Circle {
     private double radius;
-    public String color;
+    private String color;
 
     public Circle() {
 

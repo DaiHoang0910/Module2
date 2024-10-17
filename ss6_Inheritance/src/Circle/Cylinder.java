@@ -25,13 +25,13 @@ public class Cylinder extends Circle {
         this.height = height;
     }
 
-    public double getTotalArea() {
+    public double getVolume() {
         return super.getArea() * this.height;
     }
 
     @Override
     public String toString() {
-        return getTotalArea() + " ";
+        return getVolume() + " ";
     }
 
 }

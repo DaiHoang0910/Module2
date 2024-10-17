@@ -9,7 +9,7 @@ public class Test {
         System.out.println("Color of circle: " + circle.getColor());
 
         Cylinder cylinder = new Cylinder(circle.getRadius(), circle.getColor(), 10 );
-        System.out.println("Total of cylinder: " + cylinder.getTotalArea());
+        System.out.println("Total of cylinder: " + cylinder.getVolume());
 
     }
 }
