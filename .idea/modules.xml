@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/ss5_access_modifier/ss5_access_modifier.iml" filepath="$PROJECT_DIR$/ss5_access_modifier/ss5_access_modifier.iml" />
       <module fileurl="file://$PROJECT_DIR$/ss6_Inheritance/ss6_Inheritance.iml" filepath="$PROJECT_DIR$/ss6_Inheritance/ss6_Inheritance.iml" />
       <module fileurl="file://$PROJECT_DIR$/ss7_interface/ss7_interface.iml" filepath="$PROJECT_DIR$/ss7_interface/ss7_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ss8/ss8.iml" filepath="$PROJECT_DIR$/ss8/ss8.iml" />
     </modules>
   </component>
 </project>
