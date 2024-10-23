@@ -12,6 +12,8 @@ public class Test {
         System.out.println("Size: " + list.size());
         System.out.println("Contains: " + list.contains("Banana"));
         System.out.println("Element at index 1: " + list.get(1));
+        System.out.println(list.indexOf("Apple"));
+        System.out.println(list.indexOf("Orange"));
 
         list.remove(1);
         System.out.println("Size after remove: " + list.size());
