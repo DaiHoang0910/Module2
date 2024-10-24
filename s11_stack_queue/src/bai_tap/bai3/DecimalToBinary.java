@@ -1,4 +1,4 @@
-package bai_tap.bai1;
+package bai_tap.bai3;
 
 import java.util.Scanner;
 import java.util.Stack;
