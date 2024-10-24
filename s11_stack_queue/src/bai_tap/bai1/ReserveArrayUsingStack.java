@@ -14,12 +14,16 @@ public class ReserveArrayUsingStack {
             n = sc.nextInt();
         }
         int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            System.out.printf("arr[%d] = ", i);
-            arr[i] = sc.nextInt();
+        if (n == 0) {
+            System.out.println("Array is empty");
+        } else {
+            for (int i = 0; i < n; i++) {
+                System.out.printf("arr[%d] = ", i);
+                arr[i] = sc.nextInt();
+            }
+            System.out.println("Initial array: " + Arrays.toString(arr));
+            System.out.println("Array after reversal: " + Arrays.toString(reserveArray(arr)));
         }
-        System.out.println("Initial array: " + Arrays.toString(arr));
-        System.out.println("Array after reversal: " + Arrays.toString(reserveArray(arr)));
     }
 
     public static int[] reserveArray(int[] arr) {
