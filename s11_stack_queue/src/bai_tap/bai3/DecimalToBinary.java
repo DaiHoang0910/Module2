@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class DecimalToBinary {
     public void concertBinary(int num) {
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<>();
         while (num != 0) {
             int digit = num % 2;
             stack.push(digit);
