@@ -15,39 +15,34 @@ public class ProductRepository {
         products.add(new Product(5, "Mango", 7));
     }
 
-    public void add(Product product) {
-        products.add(product);
+    public boolean add(Product product) {
+        return products.add(product);
     }
 
     public List<Product> getAll() {
         return new ArrayList<>(products);
     }
 
-    public List<Product> edit(int id, String newName, double newPrice) {
-        boolean productFound = false;
-
+    public boolean edit(Product updatedProduct) {
         for (Product product : products) {
-            if (product.getId() == id) {
-                product.setName(newName);
-                product.setPrice(newPrice);
-                productFound = true;
-                break;
+            if (product.getId() == updatedProduct.getId()) {
+                product.setName(updatedProduct.getName());
+                product.setPrice(updatedProduct.getPrice());
+                return true;
             }
         }
-        if (!productFound) {
-            System.out.println("Product not found");
-        }
-        return new ArrayList<>(products);
+        return false;
     }
 
 
-    public void delete(int id) {
+    public boolean delete(int id) {
         for (int i = products.size() - 1; i >= 0; i--) {
             if (products.get(i).getId() == id) {
                 products.remove(i);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     public List<Product> search(String name) {

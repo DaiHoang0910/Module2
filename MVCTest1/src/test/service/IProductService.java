@@ -5,13 +5,13 @@ import test.entity.Product;
 import java.util.List;
 
 public interface IProductService {
-    List<Product> displayProducts();
+    List<Product> getAllProducts();
 
-    Product[] addProduct(int id, String name, double price);
+    boolean addProduct(Product updateProduct);
 
-    List<Product> editProduct(int id, String name, double price);
+    boolean editProduct(Product updateProduct);
 
-    void deleteProduct(int id);
+    boolean deleteProduct(int id);
 
     List<Product> searchProduct(String name);
 
@@ -20,7 +20,5 @@ public interface IProductService {
     List<Product> sortProductDes();
 
     boolean checkProduct(int id, String name);
-
-
 
 }

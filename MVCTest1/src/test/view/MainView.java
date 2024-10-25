@@ -24,10 +24,7 @@ public class MainView {
         switch (choice) {
             case 1:
                 System.out.println("Hiển thị danh sách sản phẩm");
-                List<Product> products = controller.getAll();
-                for (Product product : products) {
-                    System.out.println(product);
-                }
+                displayProducts();
                 break;
             case 2:
                 System.out.println("Thêm mới sản phẩm");
@@ -39,12 +36,10 @@ public class MainView {
                 String newName = sc.nextLine();
                 System.out.println("Nhập giá sản phẩm: ");
                 double newPrice = sc.nextDouble();
-                controller.addProduct(newId, newName, newPrice);
+                Product product = new Product(newId, newName, newPrice);
+                controller.addProduct(product);
                 System.out.println("Hiển thị danh sách sản phẩm");
-                List<Product> productsAdd = controller.getAll();
-                for (Product product : productsAdd) {
-                    System.out.println(product);
-                }
+                displayProducts();
                 break;
             case 3:
                 System.out.println("Sửa thông tin sản phẩm theo id");
@@ -56,21 +51,16 @@ public class MainView {
                 String editName = sc.nextLine();
                 System.out.println("Nhập giá sản phẩm cần sửa: ");
                 double editPrice = sc.nextDouble();
-                controller.editProduct(editId, editName, editPrice);
-                List<Product> productsEdit = controller.getAll();
-                for (Product product : productsEdit) {
-                    System.out.println(product);
-                }
+                Product productEdit = new Product(editId, editName, editPrice);
+                controller.editProduct(productEdit);
+                displayProducts();
                 break;
             case 4:
                 System.out.println("Xóa sản phẩm theo id");
                 System.out.println("Nhập ID sản phẩm cần xóa: ");
                 int deleteId = sc.nextInt();
                 controller.deleteProduct(deleteId);
-                List<Product> productsRemove = controller.getAll();
-                for (Product product : productsRemove) {
-                    System.out.println(product);
-                }
+                displayProducts();
                 break;
             case 5:
                 System.out.println("Tìm kiếm sản phẩm theo tên");
@@ -78,8 +68,8 @@ public class MainView {
                 System.out.println("Nhập tên sản phẩm cần tìm: ");
                 String nameSearch = sc.nextLine();
                 List<Product> searchResult = controller.searchProduct(nameSearch);
-                for (Product product : searchResult) {
-                    System.out.println(product);
+                for (Product product1 : searchResult) {
+                    System.out.println(product1);
                 }
                 break;
             case 6:
@@ -93,15 +83,15 @@ public class MainView {
                     case 1:
                         sortedProduct = controller.sortProductAsc();
                         System.out.println("Sản phẩm đã được sắp xếp tăng dần theo giá:");
-                        for (Product product : sortedProduct) {
-                            System.out.println(product);
+                        for (Product product1 : sortedProduct) {
+                            System.out.println(product1);
                         }
                         break;
                     case 2:
                         sortedProduct = controller.sortProductDes();
                         System.out.println("Sản phẩm đã được sắp xếp giảm dần theo giá:");
-                        for (Product product : sortedProduct) {
-                            System.out.println(product);
+                        for (Product product1 : sortedProduct) {
+                            System.out.println(product1);
                         }
                         break;
                     default:
@@ -112,6 +102,18 @@ public class MainView {
                 System.exit(0);
             default:
                 System.out.println("Lựa chọn không phù hợp");
+        }
+    }
+
+    private static void displayProducts() {
+        ProductController controller = new ProductController();
+        List<Product> products = controller.getAll();
+        if (products.isEmpty()) {
+            System.out.println("Không có sản phẩm nào trong danh sách");
+        } else {
+            for (Product product : products) {
+                System.out.println(product);
+            }
         }
     }
 }

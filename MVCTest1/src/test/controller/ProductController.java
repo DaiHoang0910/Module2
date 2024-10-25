@@ -10,19 +10,20 @@ public class ProductController {
     private static IProductService productService = new ProductService();
 
     public List<Product> getAll() {
-        return productService.displayProducts();
+        return productService.getAllProducts();
     }
 
-    public Product[] addProduct(int id, String name, double price) {
-        return productService.addProduct(id, name, price);
+
+    public boolean addProduct(Product updateProduct) {
+        return productService.addProduct(updateProduct);
     }
 
-    public List<Product> editProduct(int id, String newName, double newPrice) {
-        return productService.editProduct(id, newName, newPrice);
+    public boolean editProduct(Product updateProduct) {
+        return productService.editProduct(updateProduct);
     }
 
-    public void deleteProduct(int id) {
-        productService.deleteProduct(id);
+    public boolean deleteProduct(int id) {
+        return productService.deleteProduct(id);
     }
 
     public List<Product> searchProduct(String name) {

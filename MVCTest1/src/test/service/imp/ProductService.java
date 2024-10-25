@@ -11,30 +11,23 @@ public class ProductService implements IProductService {
 
 
     @Override
-    public List<Product> displayProducts() {
+    public List<Product> getAllProducts() {
         return productRepository.getAll();
     }
 
     @Override
-    public Product[] addProduct(int id, String name, double price) {
-        if (productRepository.check(id, name)) {
-            Product product = new Product(id, name, price);
-            productRepository.add(product);
-            return new Product[]{product};
-        } else {
-            System.out.println("Sản phẩm đã tồn tại với ID hoặc tên này.");
-            return null;
-        }
+    public boolean addProduct(Product product) {
+        return productRepository.add(product);
     }
 
     @Override
-    public List<Product> editProduct(int id, String newName, double newPrice) {
-        return productRepository.edit(id, newName, newPrice);
+    public boolean editProduct(Product updateProduct) {
+        return productRepository.edit(updateProduct);
     }
 
     @Override
-    public void deleteProduct(int id) {
-        productRepository.delete(id);
+    public boolean deleteProduct(int id) {
+        return productRepository.delete(id);
     }
 
     @Override
