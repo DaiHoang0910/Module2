@@ -1,4 +1,4 @@
-package thuc_hanh.bai1.fruit;
+package thuc_hanh.bai1_optional.fruit;
 
 public class Apple extends Fruit {
     @Override

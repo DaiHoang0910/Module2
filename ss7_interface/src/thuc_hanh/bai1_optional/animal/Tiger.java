@@ -1,4 +1,4 @@
-package thuc_hanh.bai1.animal;
+package thuc_hanh.bai1_optional.animal;
 
 public class Tiger extends Animal {
     @Override

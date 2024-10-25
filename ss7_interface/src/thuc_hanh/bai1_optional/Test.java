@@ -1,12 +1,12 @@
-package thuc_hanh.bai1;
+package thuc_hanh.bai1_optional;
 
-import thuc_hanh.bai1.animal.Animal;
-import thuc_hanh.bai1.animal.Chicken;
-import thuc_hanh.bai1.animal.Tiger;
-import thuc_hanh.bai1.edible.Edible;
-import thuc_hanh.bai1.fruit.Fruit;
-import thuc_hanh.bai1.fruit.Apple;
-import thuc_hanh.bai1.fruit.Orange;
+import thuc_hanh.bai1_optional.animal.Animal;
+import thuc_hanh.bai1_optional.animal.Chicken;
+import thuc_hanh.bai1_optional.animal.Tiger;
+import thuc_hanh.bai1_optional.edible.Edible;
+import thuc_hanh.bai1_optional.fruit.Fruit;
+import thuc_hanh.bai1_optional.fruit.Apple;
+import thuc_hanh.bai1_optional.fruit.Orange;
 
 public class Test {
     public static void main(String[] args) {

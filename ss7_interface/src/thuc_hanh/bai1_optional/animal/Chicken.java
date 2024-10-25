@@ -1,6 +1,6 @@
-package thuc_hanh.bai1.animal;
+package thuc_hanh.bai1_optional.animal;
 
-import thuc_hanh.bai1.edible.Edible;
+import thuc_hanh.bai1_optional.edible.Edible;
 
 public class Chicken extends Animal implements Edible {
     @Override
