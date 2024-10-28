@@ -15,8 +15,14 @@ public class ProductRepository {
         products.add(new Product(5, "Mango", 7));
     }
 
-    public boolean add(Product product) {
-        return products.add(product);
+    public boolean add(Product updateProduct) {
+        for (Product product : products) {
+            if (product.getId() == updateProduct.getId() || product.getName().equals(updateProduct.getName()) || product.getPrice() == updateProduct.getPrice()) {
+                return false;
+            }
+        }
+        products.add(updateProduct);
+        return true;
     }
 
     public List<Product> getAll() {

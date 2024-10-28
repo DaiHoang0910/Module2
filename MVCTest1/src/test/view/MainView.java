@@ -3,7 +3,6 @@ package test.view;
 import test.controller.ProductController;
 import test.entity.Product;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,7 +36,7 @@ public class MainView {
                 System.out.println("Nhập giá sản phẩm: ");
                 double newPrice = sc.nextDouble();
                 Product product = new Product(newId, newName, newPrice);
-                controller.addProduct(product);
+                controller.addProduct(checkAdd(product));
                 System.out.println("Hiển thị danh sách sản phẩm");
                 displayProducts();
                 break;
@@ -52,15 +51,24 @@ public class MainView {
                 System.out.println("Nhập giá sản phẩm cần sửa: ");
                 double editPrice = sc.nextDouble();
                 Product productEdit = new Product(editId, editName, editPrice);
-                controller.editProduct(productEdit);
-                displayProducts();
+                boolean checkEdit = controller.editProduct(productEdit);
+                if (checkEdit) {
+                    System.out.println("Sản phẩm đã được sửa");
+                    System.out.println(productEdit);
+                    System.out.println("Cập nhật danh sách");
+                    displayProducts();
+                }
                 break;
             case 4:
                 System.out.println("Xóa sản phẩm theo id");
                 System.out.println("Nhập ID sản phẩm cần xóa: ");
                 int deleteId = sc.nextInt();
-                controller.deleteProduct(deleteId);
-                displayProducts();
+                boolean checkDel = controller.deleteProduct(deleteId);
+                if (checkDel) {
+                    System.out.println("Sản phẩm đã được xóa");
+                    System.out.println("Cập nhật danh sách");
+                    displayProducts();
+                }
                 break;
             case 5:
                 System.out.println("Tìm kiếm sản phẩm theo tên");
@@ -115,5 +123,16 @@ public class MainView {
                 System.out.println(product);
             }
         }
+    }
+
+    private static Product checkAdd(Product product) {
+        ProductController controller = new ProductController();
+        boolean addProduct = controller.addProduct(product);
+        if (addProduct) {
+            System.out.println("Sản phẩm đã được thêm");
+        } else {
+            System.out.println("Sản phẩm bị trùng thông tin, vui lòng kiểm tra lại");
+        }
+        return product;
     }
 }
