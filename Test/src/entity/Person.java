@@ -41,7 +41,6 @@ public abstract class Person {
         this.address = address;
     }
 
-    public abstract void work();
 
     @Override
     public boolean equals(Object o) {
@@ -58,10 +57,8 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person {" +
-                "id=" + code +
+        return "id=" + code +
                 ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+                ", address='" + address + '\'';
     }
 }
