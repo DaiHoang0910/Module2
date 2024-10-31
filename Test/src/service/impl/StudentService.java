@@ -18,23 +18,8 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void save(Student s) {
-
-    }
-
-    @Override
-    public void update(int id, Student s) {
-
-    }
-
-    @Override
-    public void remove(int id) {
-
-    }
-
-    @Override
-    public Student findById(int id) {
-        return null;
+    public List<Student> getAllSortById() {
+        return List.of();
     }
 
     @Override

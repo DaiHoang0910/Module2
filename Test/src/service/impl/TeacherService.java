@@ -17,25 +17,9 @@ public class TeacherService implements ITeacherService {
     }
 
     @Override
-    public void save(Teacher s) {
-
+    public List<Teacher> getAllSortById() {
+        return List.of();
     }
-
-    @Override
-    public void update(int id, Teacher s) {
-
-    }
-
-    @Override
-    public void remove(int id) {
-
-    }
-
-    @Override
-    public Teacher findById(int id) {
-        return null;
-    }
-
     @Override
     public boolean add(Teacher s) {
         return teacherRepository.addTeacher(s);

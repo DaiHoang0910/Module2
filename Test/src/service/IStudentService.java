@@ -2,8 +2,6 @@ package service;
 
 import entity.Student;
 
-import java.util.List;
-
-public interface IStudentService extends IService<Student> {
+public interface IStudentService extends IPersonService<Student> {
 
 }

@@ -43,7 +43,7 @@ public class MainView {
         System.out.println("5. Tìm kiếm học sinh theo tên hoặc id");
         System.out.println("Nhập lựa chọn: ");
         Scanner scanner1 = new Scanner(System.in);
-        int choice1 = Integer.parseInt(scanner1.nextLine());
+        int choice1 = inputPropertyNumberInteger("lựa chọn");
         List<Teacher> teachers = new ArrayList<>();
         switch (choice1) {
             case 1:
@@ -98,6 +98,8 @@ public class MainView {
         System.out.println("3. Sửa thông tin học sinh");
         System.out.println("4. Xóa học sinh");
         System.out.println("5. Tìm kiếm học sinh theo tên hoặc id");
+        System.out.println("6. Sắp xếp học sinh theo tên hoặc id");
+        System.out.println("7. Quay lại menu chính");
         System.out.println("Nhập lựa chọn: ");
         Scanner scanner = new Scanner(System.in);
         int choice = Integer.parseInt(scanner.nextLine());
@@ -145,6 +147,11 @@ public class MainView {
                 students = studentController.searchByName(name);
                 displayStudent(students);
                 break;
+            case 6:
+                sortStudents(scanner, studentController);
+                break;
+            case 7:
+                return;
         }
     }
 
@@ -181,6 +188,47 @@ public class MainView {
                     teacher.getAddress(),
                     teacher.getAge(),
                     teacher.getClassWork());
+        }
+    }
+
+    public static int inputPropertyNumberInteger(String key) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Mời bạn nhập " + key + ":");
+        int value;
+        while (true) {
+            try {
+                value = Integer.parseInt(scanner.nextLine());
+                if (value < 0) {
+                    System.out.print("Số phải là nguyên dương. Mời bạn nhập lại: ");
+                    continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.print("Bạn cần nhập định dạng số: ");
+            } catch (Exception e) {
+                System.out.println("Lỗi");
+            }
+        }
+        return value;
+    }
+
+    public static void sortStudents(Scanner scanner, StudentController studentController) {
+        List<Student> students;
+        int subChoice;
+        System.out.println("Bạn muốn sắp xếp theo:");
+        System.out.println("1. Theo tên");
+        System.out.println("2. Theo id");
+        subChoice = Integer.parseInt(scanner.nextLine());
+        if (subChoice == 1) {
+            students = studentController.displayAllStudentSortById();
+            for (int i = 0; i < students.size(); i++) {
+                System.out.println(students.get(i));
+            }
+
+        } else if (subChoice == 2) {
+
+        } else {
+            System.out.println("Invalid");
         }
     }
 }

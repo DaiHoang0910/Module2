@@ -10,42 +10,64 @@ public class StudentRepository {
     private static List<Student> students = new ArrayList<>();
 
     static {
-//        students.add(new Student(1, "Nguyễn Văn A", "Hà Nội", 10, "C0824G1"));
-//        students.add(new Student(2, "Nguyễn Văn B", "Hà Nội", 10, "C0824G1"));
-//        students.add(new Student(3, "Nguyễn Văn C", "Hà Nội", 10, "C0824G1"));
-//        students.add(new Student(4, "Nguyễn Văn D", "Hà Nội", 10, "C0824G1"));
-//        students.add(new Student(5, "Nguyễn Văn F", "Hà Nội", 10, "C0824G1"));
-
-        loadStudentsFromCSV();
-    }
-
-    private static void loadStudentsFromCSV() {
+        students.add(new Student(1, "Nguyễn Văn A", "Hà Nội", 10, "C0824G1"));
+        students.add(new Student(2, "Nguyễn Văn B", "Hà Nội", 10, "C0824G1"));
+        students.add(new Student(3, "Nguyễn Văn C", "Hà Nội", 10, "C0824G1"));
+        students.add(new Student(4, "Nguyễn Văn D", "Hà Nội", 10, "C0824G1"));
+        students.add(new Student(5, "Nguyễn Văn F", "Hà Nội", 10, "C0824G1"));
+        File file = new File("Test/src/data/data.dat");
         try {
-            File file = new File("Test/src/data/students.csv");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-            String[] data;
-            while ((line = br.readLine()) != null) {
-                data = line.split(",");
-                if (data.length == 5) {
-                    int id = Integer.parseInt(data[0]);
-                    String name = data[1];
-                    String address = data[2];
-                    double points = Double.parseDouble(data[3]);
-                    String className = data[4];
-
-                    Student student = new Student(id, name, address, points, className);
-                    students.add(student);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Lỗi");
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(students);
+            objectOutputStream.close();
+            outputStream.close();
         } catch (IOException e) {
             System.out.println("Lỗi");
         }
+//        loadStudentsFromCSV();
     }
 
+//    private static void loadStudentsFromCSV() {
+//        try {
+//            File file = new File("Test/src/data/students.csv");
+//            BufferedReader br = new BufferedReader(new FileReader(file));
+//            String line;
+//            String[] data;
+//            while ((line = br.readLine()) != null) {
+//                data = line.split(",");
+//                if (data.length == 5) {
+//                    int id = Integer.parseInt(data[0]);
+//                    String name = data[1];
+//                    String address = data[2];
+//                    double points = Double.parseDouble(data[3]);
+//                    String className = data[4];
+//
+//                    Student student = new Student(id, name, address, points, className);
+//                    students.add(student);
+//                }
+//            }
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Lỗi");
+//        } catch (IOException e) {
+//            System.out.println("Lỗi");
+//        }
+//    }
+
     public List<Student> getAll() {
+        List<Student> students = new ArrayList<>();
+        File file = new File("Test/src/data/data.dat");
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            students = (List<Student>) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         return students;
     }
 

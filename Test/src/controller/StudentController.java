@@ -22,4 +22,8 @@ public class StudentController {
         return studentService.add(UpdateStudent);
     }
 
+    public List<Student> displayAllStudentSortById() {
+        return studentService.getAllSortById();
+    }
+
 }
