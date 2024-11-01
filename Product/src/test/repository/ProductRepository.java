@@ -30,12 +30,21 @@ public class ProductRepository {
     }
 
     public boolean add(Product updateProduct) {
+        File file = new File("Product/src/test/data/product.dat");
+        List<Product> products = getAll();
         for (Product product : products) {
             if (product.getId() == updateProduct.getId() || product.getName().equals(updateProduct.getName()) || product.getPrice() == updateProduct.getPrice()) {
                 return false;
             }
         }
         products.add(updateProduct);
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(products);
+        } catch (IOException e) {
+            System.out.println("Lỗi");
+        }
         return true;
     }
 
@@ -57,6 +66,8 @@ public class ProductRepository {
     }
 
     public boolean edit(Product updatedProduct) {
+        File file = new File("Product/src/test/data/product.dat");
+        List<Product> products = getAll();
         for (Product product : products) {
             if (product.getId() == updatedProduct.getId()) {
                 product.setName(updatedProduct.getName());
@@ -64,57 +75,119 @@ public class ProductRepository {
                 return true;
             }
         }
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(products);
+            objectOutputStream.close();
+            outputStream.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi");
+        }
         return false;
+
     }
 
 
     public boolean delete(int id) {
+        File file = new File("Product/src/test/data/product.dat");
+        List<Product> products = getAll();
         for (int i = products.size() - 1; i >= 0; i--) {
             if (products.get(i).getId() == id) {
                 products.remove(i);
                 return true;
             }
         }
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(products);
+            objectOutputStream.close();
+            outputStream.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi");
+        }
         return false;
     }
 
     public List<Product> search(String name) {
-        List<Product> foundProducts = new ArrayList<>();
+        File file = new File("Product/src/test/data/product.dat");
+        List<Product> foundProducts = getAll();
         for (Product product : products) {
             if (product.getName().equalsIgnoreCase(name)) {
                 foundProducts.add(product);
             }
         }
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(products);
+            objectOutputStream.close();
+            outputStream.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi");
+        }
         return foundProducts;
     }
 
     public List<Product> sortAscending() {
-        List<Product> sortedProducts = new ArrayList<>(products);
+        List<Product> sortedProducts = getAll();
+        File file = new File("Product/src/test/data/product.dat");
         Collections.sort(sortedProducts, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
                 return Double.compare(o1.getPrice(), o2.getPrice());
             }
         });
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(products);
+            objectOutputStream.close();
+            outputStream.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi");
+        }
         return sortedProducts;
     }
 
     public List<Product> sortDescending() {
-        List<Product> sortedProducts = new ArrayList<>(products);
+        List<Product> sortedProducts = getAll();
+        File file = new File("Product/src/test/data/product.dat");
         Collections.sort(sortedProducts, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
                 return Double.compare(o2.getPrice(), o1.getPrice());
             }
         });
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(products);
+            objectOutputStream.close();
+            outputStream.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi");
+        }
         return sortedProducts;
     }
 
     public boolean check(int newId, String newName) {
+        File file = new File("Product/src/test/data/product.dat");
+        List<Product> products = getAll();
         for (Product product : products) {
             if (product.getId() == newId || product.getName().equalsIgnoreCase(newName)) {
                 return false;
             }
+        }
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(products);
+            objectOutputStream.close();
+            outputStream.close();
+        } catch (IOException e) {
+            System.out.println("Lỗi");
         }
         return true;
     }
