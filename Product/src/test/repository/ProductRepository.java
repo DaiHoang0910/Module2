@@ -72,17 +72,16 @@ public class ProductRepository {
             if (product.getId() == updatedProduct.getId()) {
                 product.setName(updatedProduct.getName());
                 product.setPrice(updatedProduct.getPrice());
-                return true;
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(file);
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                    objectOutputStream.writeObject(products);
+                    return true;
+                } catch (IOException e) {
+                    System.out.println("Lỗi");
+                    return false;
+                }
             }
-        }
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(products);
-            objectOutputStream.close();
-            outputStream.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi");
         }
         return false;
 
@@ -95,99 +94,59 @@ public class ProductRepository {
         for (int i = products.size() - 1; i >= 0; i--) {
             if (products.get(i).getId() == id) {
                 products.remove(i);
-                return true;
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(file);
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+                    objectOutputStream.writeObject(products);
+                    return true;
+                } catch (IOException e) {
+                    System.out.println("Lỗi");
+                    return false;
+                }
             }
-        }
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(products);
-            objectOutputStream.close();
-            outputStream.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi");
         }
         return false;
     }
 
     public List<Product> search(String name) {
-        File file = new File("Product/src/test/data/product.dat");
-        List<Product> foundProducts = getAll();
+        List<Product> products = getAll();
+        List<Product> foundProducts = new ArrayList<>();
         for (Product product : products) {
             if (product.getName().equalsIgnoreCase(name)) {
                 foundProducts.add(product);
             }
-        }
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(products);
-            objectOutputStream.close();
-            outputStream.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi");
         }
         return foundProducts;
     }
 
     public List<Product> sortAscending() {
         List<Product> sortedProducts = getAll();
-        File file = new File("Product/src/test/data/product.dat");
         Collections.sort(sortedProducts, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
                 return Double.compare(o1.getPrice(), o2.getPrice());
             }
         });
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(products);
-            objectOutputStream.close();
-            outputStream.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi");
-        }
         return sortedProducts;
     }
 
     public List<Product> sortDescending() {
         List<Product> sortedProducts = getAll();
-        File file = new File("Product/src/test/data/product.dat");
         Collections.sort(sortedProducts, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
                 return Double.compare(o2.getPrice(), o1.getPrice());
             }
         });
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(products);
-            objectOutputStream.close();
-            outputStream.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi");
-        }
         return sortedProducts;
     }
 
     public boolean check(int newId, String newName) {
-        File file = new File("Product/src/test/data/product.dat");
         List<Product> products = getAll();
         for (Product product : products) {
             if (product.getId() == newId || product.getName().equalsIgnoreCase(newName)) {
                 return false;
             }
-        }
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            objectOutputStream.writeObject(products);
-            objectOutputStream.close();
-            outputStream.close();
-        } catch (IOException e) {
-            System.out.println("Lỗi");
         }
         return true;
     }
