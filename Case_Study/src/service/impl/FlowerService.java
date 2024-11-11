@@ -9,6 +9,13 @@ import java.util.List;
 public class FlowerService implements IFlowerService {
     private static FlowerRepository flowerRepository = new FlowerRepository();
 
+    private static FlowerService flowerService = new FlowerService();
+
+    private FlowerService() {}
+    public static FlowerService getInstance() {
+        return flowerService;
+    }
+
     @Override
     public List<Flower> getAllProducts() {
         return flowerRepository.getAll();

@@ -9,6 +9,13 @@ import java.util.List;
 public class FruitService implements IFruitService {
     private static FruitRepository fruitRepository = new FruitRepository();
 
+    private static FruitService fruitService = new FruitService();
+
+    private FruitService() {}
+    public static FruitService getInstance() {
+        return fruitService;
+    }
+
     @Override
     public List<Fruit> getAllProducts() {
         return fruitRepository.getAll();

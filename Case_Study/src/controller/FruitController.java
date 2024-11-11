@@ -2,12 +2,15 @@ package controller;
 
 import entity.Fruit;
 import service.IFruitService;
+import service.IProductService;
+import service.ServiceFactory;
 import service.impl.FruitService;
+import utils.enum_demo.ServiceEnum;
 
 import java.util.List;
 
 public class FruitController {
-    private static IFruitService fruitService = new FruitService();
+    private static IProductService fruitService = ServiceFactory.getInstance(ServiceEnum.FRUIT);
 
     public List<Fruit> getAllFruit() {
         List<Fruit> fruits = fruitService.getAllProducts();

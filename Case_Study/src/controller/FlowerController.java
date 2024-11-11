@@ -2,12 +2,15 @@ package controller;
 
 import entity.Flower;
 import service.IFlowerService;
+import service.IProductService;
+import service.ServiceFactory;
 import service.impl.FlowerService;
+import utils.enum_demo.ServiceEnum;
 
 import java.util.List;
 
 public class FlowerController {
-    private static IFlowerService flowerService = new FlowerService();
+    private static IProductService flowerService = ServiceFactory.getInstance(ServiceEnum.FLOWER);
 
     public List<Flower> getAllFlower() {
         List<Flower> fruits = flowerService.getAllProducts();

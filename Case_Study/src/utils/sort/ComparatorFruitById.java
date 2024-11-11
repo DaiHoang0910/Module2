@@ -1,4 +1,4 @@
-package sort;
+package utils.sort;
 
 import entity.Fruit;
 
