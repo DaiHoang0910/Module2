@@ -3,6 +3,7 @@ package test.view;
 import test.controller.ProductController;
 import test.entity.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -119,8 +120,13 @@ public class MainView {
         if (products.isEmpty()) {
             System.out.println("Không có sản phẩm nào trong danh sách");
         } else {
+            System.out.printf("%-5s %-20s %-10s %n", "ID", "Name", "Price");
+            System.out.println("--------------------------------------------------");
             for (Product product : products) {
-                System.out.println(product);
+                System.out.printf("%-5d %-20s %-10.2f %n",
+                        product.getId(),
+                        product.getName(),
+                        product.getPrice());
             }
         }
     }

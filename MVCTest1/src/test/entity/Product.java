@@ -1,6 +1,8 @@
 package test.entity;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private int id;
     private String name;
     private double price;

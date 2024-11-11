@@ -10,7 +10,8 @@ public class ProductController {
     private static IProductService productService = new ProductService();
 
     public List<Product> getAll() {
-        return productService.getAllProducts();
+        List<Product> products = productService.getAllProducts();
+        return products;
     }
 
 

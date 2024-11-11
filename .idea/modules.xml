@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Case_Study/Case_Study.iml" filepath="$PROJECT_DIR$/Case_Study/Case_Study.iml" />
       <module fileurl="file://$PROJECT_DIR$/MVCPerSon/MVCPerSon.iml" filepath="$PROJECT_DIR$/MVCPerSon/MVCPerSon.iml" />
       <module fileurl="file://$PROJECT_DIR$/MVCTest1/MVCTest1.iml" filepath="$PROJECT_DIR$/MVCTest1/MVCTest1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Product/Product.iml" filepath="$PROJECT_DIR$/Product/Product.iml" />
