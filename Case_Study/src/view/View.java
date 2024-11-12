@@ -85,46 +85,49 @@ public class View {
                             System.out.println("Vui lòng nhập số.");
                         }
                     }
-
-                    System.out.println("Nhập tên");
-                    String newName = scanner.nextLine();
-                    while (!isValidName(newName)) {
-                        System.out.println("Tên không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
-                        newName = scanner.nextLine();
-                    }
-
-                    double newPrice;
-                    while (true) {
-                        try {
-                            System.out.println("Nhập giá");
-                            newPrice = Double.parseDouble(scanner.nextLine());
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Vui lòng nhập số.");
+                    if (!checkIdFruit(newId)) {
+                        System.out.println("Nhập tên");
+                        String newName = scanner.nextLine();
+                        while (isValidName(newName)) {
+                            System.out.println("Tên không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
+                            newName = scanner.nextLine();
                         }
-                    }
 
-                    int newQuantity;
-                    while (true) {
-                        try {
-                            System.out.println("Nhập số lượng");
-                            newQuantity = Integer.parseInt(scanner.nextLine());
-                            break;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Vui lòng nhập số.");
+                        double newPrice;
+                        while (true) {
+                            try {
+                                System.out.println("Nhập giá");
+                                newPrice = Double.parseDouble(scanner.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Vui lòng nhập số.");
+                            }
                         }
-                    }
 
-                    System.out.println("Nhập thông tin xuất xứ");
-                    String newOrigin = scanner.nextLine();
-                    while (!isValidName(newOrigin)) {
-                        System.out.println("Thông tin không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
-                        newOrigin = scanner.nextLine();
+                        int newQuantity;
+                        while (true) {
+                            try {
+                                System.out.println("Nhập số lượng");
+                                newQuantity = Integer.parseInt(scanner.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Vui lòng nhập số.");
+                            }
+                        }
+
+                        System.out.println("Nhập thông tin xuất xứ");
+                        String newOrigin = scanner.nextLine();
+                        while (isValidName(newOrigin)) {
+                            System.out.println("Thông tin không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
+                            newOrigin = scanner.nextLine();
+                        }
+                        Fruit fruit = new Fruit(newId, newName, newPrice, newQuantity, newOrigin);
+                        fruitController.addFruit(checkAddFruit(fruit));
+                        System.out.println("Danh sách hàng hóa trái cây sau khi thêm");
+                        displayFruit();
+                    } else {
+                        System.out.println("Sản phẩm thêm mới bị trùng id, vui lòng nhập lại.");
                     }
-                    Fruit fruit = new Fruit(newId, newName, newPrice, newQuantity, newOrigin);
-                    fruitController.addFruit(checkAddFruit(fruit));
-                    System.out.println("Danh sách hàng hóa trái cây sau khi thêm");
-                    displayFruit();
                     break;
                 case 3:
                     System.out.println("Nhập thông tin cần chỉnh sửa cho hàng hóa");
@@ -142,7 +145,7 @@ public class View {
                     if (checkIdFruit(editId)) {
                         System.out.println("Nhập tên thay thế");
                         String editName = scanner.nextLine();
-                        while (!isValidName(editName)) {
+                        while (isValidName(editName)) {
                             System.out.println("Tên không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
                             editName = scanner.nextLine();
                         }
@@ -171,7 +174,7 @@ public class View {
 
                         System.out.println("Nhập thông tin xuất xứ thay thế");
                         String editOrigin = scanner.nextLine();
-                        while (!isValidName(editOrigin)) {
+                        while (isValidName(editOrigin)) {
                             System.out.println("Thông tin không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
                             editOrigin = scanner.nextLine();
                         }
@@ -208,7 +211,7 @@ public class View {
                 case 5:
                     System.out.println("Nhập tên hàng hóa trái cây cần tìm kiếm");
                     String searchName = scanner.nextLine();
-                    while (!isValidName(searchName)) {
+                    while (isValidName(searchName)) {
                         System.out.println("Tên không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
                         searchName = scanner.nextLine();
                     }
@@ -292,10 +295,21 @@ public class View {
                             System.out.println("Vui lòng nhập số.");
                         }
                     }
-
+                    while (checkIdFlower(newId)) {
+                        System.out.println("Thông tin sản phẩm bị trùng id, vui lòng nhập lại");
+                        while (true) {
+                            try {
+                                System.out.println("Nhập id của hoa cần thêm");
+                                newId = Integer.parseInt(scanner.nextLine());
+                                break;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Vui lòng nhập số.");
+                            }
+                        }
+                    }
                     System.out.println("Nhập tên");
                     String newName = scanner.nextLine();
-                    while (!isValidName(newName)) {
+                    while (isValidName(newName)) {
                         System.out.println("Tên không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
                         System.out.println("Nhập tên");
                         newName = scanner.nextLine();
@@ -314,7 +328,7 @@ public class View {
 
                     System.out.println("Nhập màu sắc");
                     String newColor = scanner.nextLine();
-                    while (!isValidName(newColor)) {
+                    while (isValidName(newColor)) {
                         System.out.println("Màu sắc nhập không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
                         System.out.println("Nhập màu sắc");
                         newColor = scanner.nextLine();
@@ -337,41 +351,50 @@ public class View {
                         }
                     }
 
-                    if (checkIdFlower(checkId)) {
-                        System.out.println("Nhập tên thay thế");
-                        String editName = scanner.nextLine();
-                        while (!isValidName(editName)) {
-                            System.out.println("Tên không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
-                            System.out.println("Nhập tên thay thế");
-                            editName = scanner.nextLine();
-                        }
-
-                        double editPrice;
+                    while (!checkIdFlower(checkId)) {
+                        System.out.println("Sản phẩm không tồn tại, vui lòng kiểm tra lại thông tin và nhập lại:");
                         while (true) {
                             try {
-                                System.out.println("Nhập giá thay thế");
-                                editPrice = Integer.parseInt(scanner.nextLine());
+                                System.out.println("Nhập id của hàng hóa cần chỉnh sửa");
+                                checkId = Integer.parseInt(scanner.nextLine());
                                 break;
                             } catch (NumberFormatException e) {
                                 System.out.println("Vui lòng nhập số.");
                             }
                         }
-
-                        System.out.println("Nhập màu sắc thay thế");
-                        String editColor = scanner.nextLine();
-                        while (!isValidName(editColor)) {
-                            System.out.println("Màu sắc nhập không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
-                            System.out.println("Nhập màu sắc thay thế");
-                            editColor = scanner.nextLine();
-                        }
-
-                        Flower editFlower = new Flower(checkId, editName, editPrice, editColor);
-                        flowerController.editFlower(editFlower);
-                        System.out.println("Danh sách hoa sau khi sửa");
-                        displayFlower();
-                    } else {
-                        System.out.println("Không tồn tại sản phẩm cần chỉnh sửa, vui lòng kiểm tra việc nhập id");
                     }
+
+                    System.out.println("Nhập tên thay thế");
+                    String editName = scanner.nextLine();
+                    while (isValidName(editName)) {
+                        System.out.println("Tên không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
+                        System.out.println("Nhập tên thay thế");
+                        editName = scanner.nextLine();
+                    }
+
+                    double editPrice;
+                    while (true) {
+                        try {
+                            System.out.println("Nhập giá thay thế");
+                            editPrice = Integer.parseInt(scanner.nextLine());
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Vui lòng nhập số.");
+                        }
+                    }
+
+                    System.out.println("Nhập màu sắc thay thế");
+                    String editColor = scanner.nextLine();
+                    while (isValidName(editColor)) {
+                        System.out.println("Màu sắc nhập không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
+                        System.out.println("Nhập màu sắc thay thế");
+                        editColor = scanner.nextLine();
+                    }
+
+                    Flower editFlower = new Flower(checkId, editName, editPrice, editColor);
+                    flowerController.editFlower(editFlower);
+                    System.out.println("Danh sách hoa sau khi sửa");
+                    displayFlower();
                     break;
                 case 4:
                     int delId;
@@ -384,18 +407,27 @@ public class View {
                             System.out.println("Vui lòng nhập số.");
                         }
                     }
-                    if (checkIdFlower(delId)) {
-                        flowerController.deleteFlower(delId);
-                        System.out.println("Danh sách hoa sau khi xóa:");
-                        displayFlower();
+                    if (!checkIdFlower(delId)) {
+                        System.out.println("Không tìm thấy sản phẩm cần xóa.");
                     } else {
-                        System.out.println("Không tồn tại sản phẩm cần xóa");
+                        System.out.println("Bạn có chắc chắn muốn xóa sản phẩm này không (yes or no)?");
+                        String del = scanner.nextLine();
+                        if (del.equalsIgnoreCase("yes")) {
+                            flowerController.deleteFlower(delId);
+                            System.out.println("Danh sách hoa sau khi xóa:");
+                            displayFlower();
+                        } else if (del.equalsIgnoreCase("no")) {
+                            System.out.println("Không có thông tin nào bị xóa");
+                            displayFlower();
+                        } else {
+                            System.out.println("Không có câu trả lời xác định. Kết thúc chức năng!");
+                        }
                     }
                     break;
                 case 5:
                     System.out.println("Nhập tên hoa cần tìm kiếm");
                     String searchName = scanner.nextLine();
-                    while (!isValidName(searchName)) {
+                    while (isValidName(searchName)) {
                         System.out.println("Tên không hợp lệ. Vui lòng nhập lại (chỉ chứa ký tự chữ, khoảng trắng):");
                         System.out.println("Nhập tên hoa cần tìm kiếm");
                         searchName = scanner.nextLine();
@@ -531,6 +563,6 @@ public class View {
 
     public static boolean isValidName(String name) {
         String regex = "^[a-zA-z\\s]+$";
-        return name.matches(regex);
+        return !name.matches(regex);
     }
 }

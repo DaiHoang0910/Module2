@@ -34,7 +34,7 @@ public class FlowerRepository {
         List<Flower> flowers = getAll();
         File file = new File("Case_Study/src/data/flower.dat");
         for (Flower flower : flowers) {
-            if (flower.getId() == updateFlower.getId()) {
+            if (flower.getName().equalsIgnoreCase(updateFlower.getName()) && flower.getColor().equalsIgnoreCase(updateFlower.getColor())) {
                 return false;
             }
         }
@@ -119,7 +119,7 @@ public class FlowerRepository {
         List<Flower> flowers = getAll();
         List<Flower> foundFlowers = new ArrayList<>();
         for (Flower flower : flowers) {
-            if (flower.getName().equalsIgnoreCase(name)) {
+            if (name.equalsIgnoreCase(flower.getName())) {
                 foundFlowers.add(flower);
             }
         }

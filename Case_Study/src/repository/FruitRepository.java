@@ -35,7 +35,7 @@ public class FruitRepository {
         List<Fruit> fruits = getAll();
         File file = new File("Case_Study/src/data/fruit.dat");
         for (Fruit fruit : fruits) {
-            if (fruit.getId() == updateFruit.getId()) {
+            if (fruit.getName().equalsIgnoreCase(updateFruit.getName()) && fruit.getOrigin().equalsIgnoreCase(updateFruit.getOrigin())) {
                 return false;
             }
         }
