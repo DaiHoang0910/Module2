@@ -21,9 +21,9 @@ public class NormalController {
         normalList.add(normal);
         return normalList;
     }
-    public List<MedicalRecordNormal> delete(MedicalRecordNormal normal) {
-        List<MedicalRecordNormal> normalList = normalService.getMedicalRecords();
-        normalList.remove(normal);
+
+    public List<MedicalRecordNormal> delete(String code) {
+        List<MedicalRecordNormal> normalList = normalService.deleteRecord(code);
         return normalList;
     }
 }

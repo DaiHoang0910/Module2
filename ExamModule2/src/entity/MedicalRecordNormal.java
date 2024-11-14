@@ -11,15 +11,17 @@ public class MedicalRecordNormal extends MedicalRecord {
         super(id, code, name, dateIn, dateOut, reason);
         this.price = price;
     }
+
     public double getPrice() {
         return price;
     }
+
     public void setPrice(double price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "giá(VND)= " + price;
+        return super.toString() + ", Giá(VND)= " + price;
     }
 }

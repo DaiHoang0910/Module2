@@ -11,14 +11,17 @@ public class MedicalRecordVip extends MedicalRecord {
         super(id, code, name, dateIn, dateOut, reason);
         this.vipId = vipId;
     }
+
     public String getVipId() {
         return vipId;
     }
+
     public void setVipId(String vipId) {
         this.vipId = vipId;
     }
+
     @Override
     public String toString() {
-        return super.toString() + "VipId: " + vipId;
+        return super.toString() + ", VipId: " + vipId;
     }
 }

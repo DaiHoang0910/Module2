@@ -43,8 +43,7 @@ public class VipRepository {
     }
 
     public List<MedicalRecordVip> getAll() {
-        List<MedicalRecordVip> vipList = new ArrayList<>();
-        return vipList;
+        return new ArrayList<>(vipLists);
     }
 
     public List<MedicalRecordVip> addRecord(MedicalRecordVip updateRecord) {

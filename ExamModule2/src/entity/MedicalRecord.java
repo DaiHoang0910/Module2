@@ -70,7 +70,7 @@ public abstract class MedicalRecord {
 
     @Override
     public String toString() {
-        return "MedicalRecord{" + "STT: " + id + ", Mã bệnh án: " + code + ", Tên bệnh nhân: " + name
-                + ", Ngày nhập viện: " + dateIn + ", Ngày ra viện: " + dateOut + ", Lý do ra viện: " + reason + '}';
+        return "STT: " + id + ", Mã bệnh án: " + code + ", Tên bệnh nhân: " + name
+                + ", Ngày nhập viện: " + dateIn + ", Ngày ra viện: " + dateOut + ", Lý do ra viện: " + reason;
     }
 }

@@ -28,6 +28,7 @@ public class View {
         switch (choice) {
             case 1:
                 System.out.println("1. Thêm mới");
+                scanner.nextLine();
                 System.out.println("Loại bệnh án thêm mới (benh an thuong / benh an Vip ");
                 String benhAn = scanner.nextLine();
                 if (benhAn.equalsIgnoreCase("benh an thuong")) {
@@ -35,16 +36,19 @@ public class View {
                     int newId = scanner.nextInt();
                     System.out.println("Nhập mã bệnh án");
                     String newCode = scanner.nextLine();
-                    scanner.close();
+                    while (!isValidName(newCode)) {
+                        System.out.println("Vui long nhap lai");
+                        System.out.println("Nhập mã bệnh án");
+                        newCode = scanner.nextLine();
+                        break;
+                    }
+                    scanner.nextLine();
                     System.out.println("Nhập tên bệnh nhân");
                     String newName = scanner.nextLine();
-                    scanner.nextLine();
                     System.out.println("Nhập ngày vào viện");
                     String newDateIn = scanner.nextLine();
-                    scanner.nextLine();
                     System.out.println("Nhập ngày ra viện");
                     String newDateOut = scanner.nextLine();
-                    scanner.nextLine();
                     System.out.println("Nhập lý do vào việc");
                     String newReason = scanner.nextLine();
                     System.out.println("Nhập tiền viện phí");
@@ -60,6 +64,11 @@ public class View {
                     int newId = scanner.nextInt();
                     System.out.println("Nhập mã bệnh án");
                     String newCode = scanner.nextLine();
+                    while (!isValidName(newCode)) {
+                        System.out.println("Vui long nhap lai");
+                        System.out.println("Nhập mã bệnh án");
+                        newCode = scanner.nextLine();
+                    }
                     scanner.close();
                     System.out.println("Nhập tên bệnh nhân");
                     String newName = scanner.nextLine();
@@ -80,12 +89,26 @@ public class View {
                     for (MedicalRecordVip medicalRecordVip : medicalRecordVipList) {
                         System.out.println(medicalRecordVip);
                     }
-                }else {
+                } else {
                     System.out.println("Nhap khong hop le");
                 }
                 break;
             case 2:
                 System.out.println("2. Xóa");
+                scanner.nextLine();
+                System.out.print("Nhập mã bệnh án để xóa: ");
+                String code = scanner.nextLine();
+                normalController.delete(code);
+                vipController.deleteVip(code);
+                System.out.println("Hiển thị danh sách các bệnh án");
+                medicalRecordNormalsList = normalController.getAll();
+                for (MedicalRecordNormal medicalRecordNormal : medicalRecordNormalsList) {
+                    System.out.println(medicalRecordNormal);
+                }
+                medicalRecordVipList = vipController.getAll();
+                for (MedicalRecordVip medicalRecordVip : medicalRecordVipList) {
+                    System.out.println(medicalRecordVip);
+                }
                 break;
             case 3:
                 System.out.println("3. Xem danh sách các bệnh án");
@@ -100,12 +123,18 @@ public class View {
                 break;
             case 4:
                 System.out.println("4. Thoát");
-                break;
+                scanner.close();
+                return;
             default:
-                System.out.println("Chọn chức năng: ");
+                System.out.println("Chọn chức năng không hợp lệ. ");
                 break;
         }
 
+    }
+
+    public static boolean isValidName(String code) {
+        String regex = "^BA-\\d{3}$";
+        return !code.matches(regex);
     }
 
 

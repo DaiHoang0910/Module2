@@ -40,13 +40,12 @@ public class NormalRepository {
         } catch (IOException e) {
             System.out.println("Lỗi");
         } catch (NumberFormatException e) {
-            System.out.println("Data format error.");
+            System.out.println("Ngoại lệ định dạng số.");
         }
     }
 
     public List<MedicalRecordNormal> getAll() {
-        List<MedicalRecordNormal> normalList = new ArrayList<>();
-        return normalList;
+        return new ArrayList<>(normalLists);
     }
 
     public List<MedicalRecordNormal> addRecord(MedicalRecordNormal updateRecord) {
@@ -54,7 +53,7 @@ public class NormalRepository {
         for (MedicalRecordNormal record : normalList) {
             if (record.getId() == updateRecord.getId()) {
                 System.out.println("Bị trùng thông tin bệnh án");
-            }else{
+            } else {
                 normalList.add(record);
             }
         }
@@ -64,7 +63,7 @@ public class NormalRepository {
     public List<MedicalRecordNormal> deleteRecord(String code) {
         List<MedicalRecordNormal> normalList = new ArrayList<>();
         for (MedicalRecordNormal record : normalList) {
-            if(code.equalsIgnoreCase(record.getCode())) {
+            if (code.equalsIgnoreCase(record.getCode())) {
                 normalList.remove(record);
             }
         }
